@@ -202,6 +202,10 @@ for g_code, rows in sorted(groups_raw.items()):
         l = int(r['lab']) if r['lab'] and str(r['lab']).isdigit() else 0
         total_aud = m + a + s + l
         
+        h1 = int(r['h1']) if r.get('h1') and str(r['h1']).isdigit() else 0
+        h2 = int(r.get('h2')) if r.get('h2') and str(r['h2']).isdigit() else 0
+        h3 = int(r.get('h3')) if r.get('h3') and str(r['h3']).isdigit() else 0
+
         CURRICULUMS.append({
             "id": f"c-sirtqi-{c_idx}",
             "code": f"FAN-{c_idx:03d}",
@@ -210,17 +214,20 @@ for g_code, rows in sorted(groups_raw.items()):
             "semester": "fall",
             "subjectName": sub,
             "credit": 4,
-            "totalHours": total_aud * 3,
-            "independentHours": total_aud * 2,
+            "totalHours": total_aud * 3 if total_aud > 0 else 120,
+            "independentHours": total_aud * 2 if total_aud > 0 else 60,
             "semesterLectureHours": m,
             "semesterPracticeHours": a,
             "semesterLabHours": l,
             "semesterSeminarHours": s,
-            "lectureHours": round(m / 4) if m > 0 else 0,
-            "practiceHours": round(a / 4) if a > 0 else 0,
-            "labHours": round(l / 4) if l > 0 else 0,
-            "seminarHours": round(s / 4) if s > 0 else 0,
-            "hoursPerWeek": round(total_aud / 4) if total_aud > 0 else 2,
+            "lectureHours": m,
+            "practiceHours": a,
+            "labHours": l,
+            "seminarHours": s,
+            "hoursPerWeek": total_aud,
+            "week1Hours": h1,
+            "week2Hours": h2,
+            "week3Hours": h3,
             "teacherId": t_id,
             "lectureTeacherId": t_id,
             "practiceTeacherId": t_id,
