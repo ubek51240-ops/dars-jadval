@@ -1,0 +1,209 @@
+Dars jadvali tuzish qoidalari
+2026-yil 23-noyabr
+Dars jadvali 11 ta vazifani ketma-ket bajarish orqali tuziladi; har bir vazifa oldingisining natijasiga tayanadi, shuning uchun tartib buzilmaydi. Har vazifada nima kirishi, nima qilinishi va natijasi nima bo’lishi ko’rsatilgan.
+Har bir vazifada amal qiladigan 5 ta qat’iy cheklov (birortasi buzilsa, jadval yaroqsiz):
+Bitta guruh bir vaqtda (kun + para) faqat bitta mashg’ulotda.
+Bitta o’qituvchi bir vaqtda faqat bitta mashg’ulotda (barcha yo’nalishlar bo’yicha birga).
+Bitta xonada bir vaqtda faqat bitta mashg’ulot, va xona sig’imi talabalar sonidan kam emas.
+Har bir fanning har bir turi (ma’ruza, amaliy, seminar, laboratoriya) bo’yicha jadvaldagi soat o’quv rejadagi soatga teng.
+Guruh va o’qituvchining kunlik va haftalik yuklamasi belgilangan chegaradan oshmaydi.
+I bosqich. Tayyorgarlik
+1-vazifa. Boshlang’ich ma’lumotlarni yig’ish
+Jadval faqat tasdiqlangan hujjatlar asosida tuziladi; quyidagilardan biri yo’q bo’lsa, ishni boshlamang.
+Ma’lumot
+Manba
+Nima olinadi
+Ishchi o’quv reja
+O’quv-uslubiy bo’lim
+Har yo’nalish, kurs, semestr bo’yicha fanlar va har bir turdagi auditoriya soati
+Kontingent
+Registrator ofisi / HEMIS
+Guruhlar ro’yxati, har guruhdagi talabalar soni, ta’lim shakli va tili
+Akademik kalendar
+O’quv bo’limi
+Semestr yoki sessiya boshlanishi, tugashi, haftalar soni, bayram kunlari
+O’quv yuklamasi
+Kafedralar
+Har fan–tur–guruh uchun biriktirilgan o’qituvchi, o’qituvchining stavkasi
+O’qituvchining band vaqti
+Kafedralar
+O’rindoshlarning asosiy ishdagi vaqti, boshqa majburiyatlar
+Xonalar
+Xo’jalik bo’limi
+Xona raqami, sig’imi, turi (ma’ruza zali, laboratoriya, kompyuter xonasi)
+Natija: to’liq va bir-biriga mos ma’lumotlar to’plami. Reja va kontingentdagi guruh nomlari bir xil bo’lishi tekshiriladi.
+2-vazifa. Vaqt panjarasini belgilash
+Haftadagi dars kunlarini belgilang (masalan, Dushanba–Shanba = 6 kun).
+Kunlik para sonini va har bir paraning boshlanish–tugash vaqtini belgilang (1 para = 80 daqiqa = 2 akademik soat, paralar orasida tanaffus).
+Para raqami har kuni 1 dan boshlanadi va vaqtga qat’iy bog’lanadi: “2-para” har kuni bir xil vaqtda.
+Haftalik sig’imni hisoblang: kunlar × kunlik para = guruhning haftalik maksimal parasi (masalan, 6 × 3 = 18 para = 36 soat).
+Natija: barcha yo’nalishlar uchun yagona vaqt panjarasi (kun × para).
+3-vazifa. Fanlarning haftalik soatini hisoblash
+Har bir guruh uchun, har bir fan va har bir mashg’ulot turi alohida hisoblanadi:
+Haftalik para = O’quv rejadagi soat (shu tur bo’yicha) ÷ (2 × Haftalar soni)
+Natija butun son chiqsa — har hafta shuncha para.
+Butun chiqmasa — haftalarga notekis taqsimlanadi (masalan, 2,5 para → birinchi haftalarda 3, keyingilarida 2), lekin jami soat rejaga teng bo’ladi.
+Guruhning barcha fanlari bo’yicha haftalik paralar yig’indisi 2-vazifadagi haftalik sig’imdan oshmasligi kerak.
+Oshsa — jadval tuzishni to’xtating va o’quv bo’limiga xabar bering (haftalar sonini yoki kunlik parani o’zgartirish kerak).
+Yig’indi sig’imdan kam bo’lsa — qolgan joylar mustaqil ta’limga ajratiladi.
+Natija: har guruh uchun jadval: Fan · Tur · Haftalik para.
+II bosqich. Kim kimga dars beradi
+4-vazifa. Potoklarni belgilash
+Potok — ma’ruzani birga tinglaydigan guruhlar to’plami. Amaliy, seminar va laboratoriya har doim guruhning o’zida o’tadi.
+Guruhlar bitta potokka faqat quyidagi shartlarning hammasi bajarilganda birlashtiriladi:
+Fan bir xil va o’quv rejadagi ma’ruza soati bir xil.
+Kurs, semestr va ta’lim shakli (kunduzgi, sirtqi, kechki) bir xil.
+Ta’lim tili bir xil.
+Ma’ruzachi bitta o’qituvchi.
+Potokdagi jami talabalar soni eng katta ma’ruza zalining sig’imidan oshmaydi.
+Potokdagi guruhlar soni universitet belgilagan chegaradan oshmaydi (masalan, 3 guruh).
+Qo’shimcha qoidalar:
+Turli yo’nalishlarning guruhlari ham, umumiy fan bo’yicha (masalan, Fan A barcha yo’nalishlarda bir xil soatda) yuqoridagi shartlar bajarilsa, bitta potok bo’la oladi.
+Potok fan bo’yicha tuziladi: Guruh 1 va Guruh 2 Fan A da bitta potokda, Fan B da esa turli potoklarda bo’lishi mumkin.
+Laboratoriya yoki xorijiy til uchun guruhni kichik guruhlarga bo’lish kerak bo’lsa (talabalar soni belgilangan me’yordan ko’p bo’lsa), har kichik guruh alohida dars birligi hisoblanadi.
+Natija: har fan uchun ro’yxat: Potok → unga kiruvchi guruhlar.
+5-vazifa. O’qituvchilarni biriktirish va yuklamani tekshirish
+Har bir Fan · Tur · Guruh (yoki Potok) juftligiga bitta o’qituvchi biriktiriladi; u semestr oxirigacha o’zgarmaydi.
+O’qituvchining jadvaldagi haftalik parasi uning stavkasi bo’yicha ruxsat etilgan haftalik yuklamadan oshmasligi tekshiriladi.
+O’qituvchining haftalik parasi haftalik sig’imdan (2-vazifa) oshsa — uni jadvalga joylashtirib bo’lmaydi: yuklamaning bir qismini boshqa o’qituvchiga berish kerak.
+O’rindosh o’qituvchilar uchun “band vaqtlar” belgilanadi: bu vaqtlarga ularning darsi qo’yilmaydi.
+Bir o’qituvchi bir kunda nechta paradan ko’p dars bera olmasligi belgilanadi (masalan, kunlik para sonidan ko’p emas).
+Natija: o’qituvchilar ro’yxati: O’qituvchi · haftalik para · band vaqtlari.
+6-vazifa. Dars birliklari ro’yxatini tuzish
+Dars birligi — jadvalga qo’yiladigan bitta para. Jadval aynan shu ro’yxatdan tuziladi.
+Har bir dars birligi uchun yozing: Kimga (potok, guruh yoki kichik guruh) · Fan · Tur · O’qituvchi · Haftalik soni · Kerakli xona turi va sig’imi.
+Ma’ruza potok uchun bitta yoziladi (har guruhga alohida emas).
+Har bir guruh bo’yicha tekshiring: unga tegishli barcha birliklar (potokdagi ma’ruzalar + o’z amaliy/seminarlari) yig’indisi 3-vazifadagi haftalik paraga teng.
+Har bir o’qituvchi bo’yicha tekshiring: birliklar yig’indisi 5-vazifadagi yuklamaga teng.
+Natija: joylashtirishga tayyor dars birliklari ro’yxati.
+III bosqich. Jadvalga joylashtirish
+7-vazifa. Dars birliklarini vaqtga joylashtirish
+Eng qiyin joylashadigan birlik birinchi qo’yiladi. Navbat tartibi:
+Bir nechta yo’nalish yoki potokda ishlaydigan o’qituvchilarning darslari — ular eng ko’p cheklangan.
+Potok ma’ruzalari — bir vaqtda bir nechta guruhni va katta zalni band qiladi.
+O’rindosh o’qituvchilarning darslari — faqat ularning bo’sh vaqtiga.
+Maxsus xona talab qiladigan darslar (laboratoriya, kompyuter xonasi, sport zali).
+Qolgan amaliy va seminarlar.
+Mustaqil ta’lim — guruhning bo’sh qolgan kataklariga.
+Har bir birlikni qo’yishda ikki xil qoidaga amal qilinadi.
+Qat’iy qoidalar (bajarilmasa — bu vaqtga qo’yib bo’lmaydi):
+Guruh (yoki potokdagi har bir guruh) shu vaqtda bo’sh.
+O’qituvchi shu vaqtda bo’sh va bu uning band vaqti emas.
+O’qituvchining shu kundagi parasi kunlik chegaradan oshmaydi.
+Mos turdagi va yetarli sig’imli bo’sh xona bor.
+Sifat qoidalari (iloji boricha bajariladi):
+Har fan bo’yicha guruhning birinchi mashg’uloti — ma’ruza; amaliy va seminar undan keyin.
+Bir kunda bitta fandan ko’pi bilan 2 para; bir xil turdagi ikki mashg’ulot (amaliy + amaliy) bir kunga qo’yilmaydi.
+Haftasiga 2 va undan ortiq parali fan turli kunlarga taqsimlanadi.
+Guruhning kunida “oyna” (darslar orasida bo’sh para) qolmaydi; mustaqil ta’lim kun boshi yoki oxiriga.
+O’qituvchining bir kundagi darslari ketma-ket bo’ladi, oralig’ida bo’sh para qolmaydi.
+O’qituvchi bir nechta guruhda bir xil fandan dars bersa, darslar turli paralarga qo’yiladi (Fan A — Guruh 1 ga 1-para, Guruh 2 ga 2-para).
+Guruhlarning kunlik yuklamasi hafta bo’ylab teng taqsimlanadi.
+Birlikni hech qayerga qo’yib bo’lmasa, oldin qo’yilgan bitta birlikni boshqa vaqtga ko’chirib, qaytadan urinib ko’ring. Shunda ham bo’lmasa, 5-vazifaga qayting (yuklamani o’zgartirish kerak).
+Natija: har bir dars birligining kuni va parasi belgilangan.
+8-vazifa. Xonalarni taqsimlash
+Ma’ruza — potok talabalari sig’adigan katta zalga.
+Laboratoriya va kompyuter darslari — shunga jihozlangan xonaga.
+Amaliy va seminar — guruh sig’adigan oddiy xonaga.
+Mustaqil ta’lim — axborot-resurs markaziga (ARM) yoki bo’sh xonaga; ARM sig’imidan oshmasin.
+Bitta xonaga bir vaqtda faqat bitta dars — barcha yo’nalishlar bo’yicha birga tekshiriladi.
+Guruhga kun davomida, o’qituvchiga esa darslari orasida iloji boricha bitta xona yoki bitta qavat beriladi.
+Faqat tasdiqlangan xonalar ro’yxatidagi raqamlar ishlatiladi.
+Natija: har bir dars birligi uchun Kun · Para · Xona — to’liq jadval loyihasi.
+IV bosqich. Tekshirish va tasdiqlash
+9-vazifa. Qat’iy cheklovlarni tekshirish
+Barcha yo’nalishlarning jadvallari bitta ro’yxatga yig’iladi (har bir qator: Kun · Para · Guruh · Fan · Tur · O’qituvchi · Xona) va tekshiriladi:
+☐ Kun + Para + Guruh takrorlanmaydi
+☐ Kun + Para + O’qituvchi takrorlanmaydi
+☐ Kun + Para + Xona takrorlanmaydi
+☐ Har bir Guruh · Fan · Tur bo’yicha jadvaldagi soat = o’quv rejadagi soat
+☐ Har bir guruhning haftalik parasi = rejadagi jami (+ mustaqil ta’lim), sig’imdan oshmaydi
+☐ Har bir o’qituvchining kunlik va haftalik parasi chegaradan oshmaydi
+☐ O’rindoshlarning darsi ularning band vaqtiga tushmagan
+☐ Ma’ruza zali sig’imi potokdagi talabalar sonidan kam emas
+☐ Potokdagi barcha guruhlarda ma’ruza bir vaqtda turibdi
+Excel’da bu tekshiruv COUNTIFS bilan qilinadi: natija 1 dan katta bo’lgan har bir qator — to’qnashuv.
+10-vazifa. Sifat qoidalarini tekshirish va tuzatish
+☐ Har fanda birinchi mashg’ulot ma’ruza
+☐ Bir kunda bitta fandan 2 paradan ko’p yo’q
+☐ Guruh kunlarida “oyna” yo’q
+☐ O’qituvchi kunlarida bo’sh para yo’q
+☐ Yuklama hafta bo’ylab teng taqsimlangan
+Buzilishlar ro’yxati tuziladi va tuzatiladi: tuzatishdan keyin 9-vazifa qayta bajariladi (tuzatish yangi to’qnashuv keltirib chiqarmasligi kerak).
+11-vazifa. Kelishish, tasdiqlash va e’lon qilish
+Loyiha kafedra mudirlariga yuboriladi: o’qituvchilar o’z jadvalini tekshiradi (belgilangan muddatda).
+Takliflar asosida tuzatish → 9 va 10-vazifalar qayta.
+Tegishli bo’lim boshlig’i imzolaydi, o’quv ishlari bo’yicha prorektor tasdiqlaydi.
+E’lon qilinadi: talabalar uchun guruh bo’yicha, o’qituvchilar uchun shaxsiy jadval, xonalar bo’yicha bandlik jadvali.
+Semestr davomida har bir o’zgarish (o’qituvchi almashishi, xona ta’miri) shu tartibda kiritiladi: o’zgartirish → 9-vazifa → tasdiq → e’lon.
+Misol
+Shartlar: sessiya 4 hafta; Guruh 1, Guruh 2, Guruh 3 — bir yo’nalish, bir kurs, har birida 25 talaba; ma’ruza zali 80 o’rinli. O’quv rejada (har guruhga):
+Fan A: ma’ruza 16 soat, amaliy 24 soat — O’qituvchi A
+Fan B: ma’ruza 8 soat, seminar 8 soat — O’qituvchi B
+3-vazifa (haftalik soat): Fan A ma’ruza 16 ÷ (2 × 4) = 2 para; amaliy 24 ÷ 8 = 3 para. Fan B ma’ruza 8 ÷ 8 = 1 para; seminar 1 para. Har guruhga jami 7 para/hafta ≤ 18 — sig’adi.
+4-vazifa (potok): 3 guruh, fan va soatlar bir xil, 75 talaba ≤ 80 o’rin → Potok 1 = Guruh 1 + Guruh 2 + Guruh 3 (Fan A va Fan B ma’ruzalari uchun).
+5-vazifa (yuklama): O’qituvchi A — 2 + 3 × 3 = 11 para/hafta; O’qituvchi B — 1 + 3 = 4 para/hafta.
+6-vazifa (dars birliklari):
+Kimga
+Fan
+Tur
+O’qituvchi
+Haftada
+Potok 1
+Fan A
+Ma’ruza
+O’qituvchi A
+2
+Guruh 1
+Fan A
+Amaliy
+O’qituvchi A
+3
+Guruh 2
+Fan A
+Amaliy
+O’qituvchi A
+3
+Guruh 3
+Fan A
+Amaliy
+O’qituvchi A
+3
+Potok 1
+Fan B
+Ma’ruza
+O’qituvchi B
+1
+Guruh 1
+Fan B
+Seminar
+O’qituvchi B
+1
+Guruh 2
+Fan B
+Seminar
+O’qituvchi B
+1
+Guruh 3
+Fan B
+Seminar
+O’qituvchi B
+1
+7-vazifa (joylashtirish, Dushanba):
+Para
+Guruh 1
+Guruh 2
+Guruh 3
+1
+Fan A ma’ruza (Potok 1, O’qituvchi A, katta zal)
+←
+←
+2
+Fan A amaliy (O’qituvchi A)
+Fan B seminar (O’qituvchi B)
+Mustaqil ta’lim
+3
+Fan B seminar (O’qituvchi B)
+Fan A amaliy (O’qituvchi A)
+Mustaqil ta’lim
+Tekshiruv: O’qituvchi A 1–2–3-paralarda ketma-ket, hech qayerda ikki joyda emas; Fan A da amaliy ma’ruzadan keyin; Guruh 3 ning Fan A amaliysi boshqa kunga qo’yiladi, chunki O’qituvchi A bu kunda 3 para bilan to’lgan.
