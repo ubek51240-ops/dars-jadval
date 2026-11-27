@@ -93,8 +93,15 @@ MAJORS = [
 ]
 
 def find_major_id(grp_name):
-    clean_g = grp_name.upper()
-    for m in MAJORS_DEF:
+    # Prefiks guruh kodidagi "-<raqam><PREFIKS>-" qismi bilan aniq mos kelishi kerak:
+    # aks holda "1-1MMTS-24" (Moliya) "MTS" (Maktabgacha) ga noto'g'ri tushib qoladi.
+    clean_g = grp_name.upper().replace(' ', '')
+    m_code = re.match(r'^\d+-\d+([A-Z]+)-\d+', clean_g)
+    if m_code:
+        for m in MAJORS_DEF:
+            if m["prefix"] == m_code.group(1):
+                return m["id"]
+    for m in sorted(MAJORS_DEF, key=lambda x: -len(x["prefix"])):
         if m["prefix"] in clean_g:
             return m["id"]
     return "m-iqt"

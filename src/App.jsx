@@ -46,6 +46,7 @@ import {
   WEEKS
 } from './data.js';
 import { generateSchedule } from './algorithm.js';
+import PlanScheduler from './PlanScheduler.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('generator'); // generator, excel, curriculums, teachers, departments, majors, rooms
@@ -1110,6 +1111,13 @@ export default function App() {
         >
           <Calendar className="w-4 h-4" />
           <span>15-Haftalik Dars Jadvali</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('plan')}
+          className={`hemis-tab-btn font-bold text-indigo-800 ${activeTab === 'plan' ? 'active' : ''}`}
+        >
+          <BookOpen className="w-4 h-4 text-indigo-600" />
+          <span>Reja → Jadval (Excel)</span>
         </button>
         <button
           onClick={() => setActiveTab('audit')}
@@ -2219,7 +2227,9 @@ export default function App() {
         )}
 
         {/* TAB 2: EXCEL IMPORT & TEMPLATES (YANGI BO'LIM) */}
-        {activeTab === 'excel' && (
+        {activeTab === 'plan' && <PlanScheduler />}
+
+      {activeTab === 'excel' && (
           <div className="space-y-4">
             
             <div className="p-4 bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded shadow-sm">

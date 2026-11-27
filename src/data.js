@@ -225,7 +225,7 @@ export const INITIAL_GROUPS = [
   },
   {
     "id": "g-1-1mmts-24",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "name": "1-1MMTS-24 (Sirtqi)",
     "code": "1-1MMTS-24",
@@ -3782,7 +3782,7 @@ export const INITIAL_CURRICULUMS = [
   {
     "id": "c-sirtqi-40",
     "code": "FAN-040",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "semester": "fall",
     "subjectName": "Moliya asoslari 1,2",
@@ -3811,7 +3811,7 @@ export const INITIAL_CURRICULUMS = [
   {
     "id": "c-sirtqi-41",
     "code": "FAN-041",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "semester": "fall",
     "subjectName": "Investitsiyalar",
@@ -3840,7 +3840,7 @@ export const INITIAL_CURRICULUMS = [
   {
     "id": "c-sirtqi-42",
     "code": "FAN-042",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "semester": "fall",
     "subjectName": "Portfel nazariyasi va moliyaviy bozorlar",
@@ -3869,7 +3869,7 @@ export const INITIAL_CURRICULUMS = [
   {
     "id": "c-sirtqi-43",
     "code": "FAN-043",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "semester": "fall",
     "subjectName": "Korporativ moliya",
@@ -3898,7 +3898,7 @@ export const INITIAL_CURRICULUMS = [
   {
     "id": "c-sirtqi-44",
     "code": "FAN-044",
-    "majorId": "m-mt",
+    "majorId": "m-mmt",
     "year": 3,
     "semester": "fall",
     "subjectName": "Davlat moliyasi 1,2",

@@ -42,6 +42,28 @@ export function generateSchedule({
   // I BOSQICH: TAYYORGARLIK & II BOSQICH: DARS BIRLIKLARI
   // 1, 2, 3, 4, 6-vazifalar
   // ========================================================
+  // Sirtqi: har haftaning o'z soati bor (week1Hours..week3Hours). Berilmagan bo'lsa
+  // fanning auditoriya paralari haftalar bo'yicha teng taqsimlanadi.
+  const weekAlloc = (curr, totalSlots) => {
+    let w = WEEKS.map(wk => Number(curr[`week${wk.weekNumber}Hours`]) || 0);
+    if (!w.some(x => x > 0)) w = w.map(() => 1);
+    const sum = w.reduce((a, b) => a + b, 0);
+    const raw = w.map(x => (x / sum) * totalSlots);
+    const base = raw.map(Math.floor);
+    let rem = totalSlots - base.reduce((a, b) => a + b, 0);
+    raw
+      .map((r, i) => ({ i, f: r - Math.floor(r) }))
+      .sort((a, b) => b.f - a.f || a.i - b.i)
+      .forEach(({ i }) => {
+        if (rem > 0) {
+          base[i]++;
+          rem--;
+        }
+      });
+    return base;
+  };
+
+  const runWeek = (weekNum, weekIdx) => {
   const lectureItems = [];
   const otherItems = [];
 
@@ -58,9 +80,10 @@ export function generateSchedule({
 
       const addSlots = (type, hours, teacherId, reqRoom) => {
         const slotsNeeded = Math.max(1, Math.round(hours / 2));
-        for (let s = 0; s < slotsNeeded; s++) {
+        const weekSlots = weekAlloc(curr, slotsNeeded)[weekIdx] || 0;
+        for (let s = 0; s < weekSlots; s++) {
           const item = {
-            id: `${group.id}_${curr.id}_${type}_${s}`,
+            id: `${group.id}_${curr.id}_${type}_w${weekNum}_${s}`,
             groupId: group.id,
             group,
             curriculumId: curr.id,
@@ -78,7 +101,7 @@ export function generateSchedule({
             credit: curr.credit || 4,
             totalHours: curr.totalHours || 120,
             weekPattern: curr.weekPattern || 'all',
-            activeWeeks: curr.activeWeeks || null
+            activeWeeks: [weekNum]
           };
           if (type === 'lecture') {
             lectureItems.push(item);
@@ -122,7 +145,7 @@ export function generateSchedule({
   function createPotokUnit(cluster, totalStudents) {
     const first = cluster[0];
     return {
-      id: `potok_${cluster.map(c => c.groupId).join('_')}_${first.subjectName}_${first.slotIndex}`,
+      id: `potok_w${weekNum}_${cluster.map(c => c.groupId).join('_')}_${first.subjectName}_${first.slotIndex}`,
       isPotok: cluster.length > 1,
       items: cluster,
       groups: cluster.map(c => c.group),
@@ -315,10 +338,10 @@ export function generateSchedule({
         // Didaktik qat'iy nazorat: amaliyot ma'ruzadan keyin
         if (pass <= 2 && unit.type !== 'lecture' && dayId < earliestAllowedDay) continue;
 
-        // Guruh kunlik sig'imi (maks 4 para)
+        // Guruh kunlik sig'imi (maks 3 para)
         let dayFull = false;
         for (const gId of unit.groupIds) {
-          if (getSet(groupDaySlots, `${dayId}_${gId}`).size >= 4) {
+          if (getSet(groupDaySlots, `${dayId}_${gId}`).size >= 3) {
             dayFull = true;
             break;
           }
@@ -525,10 +548,21 @@ export function generateSchedule({
     if (!placed) {
       conflicts.push({
         unit,
-        reason: "Mos bo'sh vaqt yoki xona topilmadi"
+        reason: "Mos bo'sh vaqt yoki xona topilmadi",
+        weekNumber: weekNum
       });
     }
   });
+
+  repairTeacherWindows(masterEntries);
+  return { masterEntries, conflicts, potokUnits };
+  };
+
+  // Har bir hafta alohida joylashtiriladi (o'sha haftaning soatlari bo'yicha)
+  const weekResults = WEEKS.map((w, idx) => runWeek(w.weekNumber, idx));
+  const masterEntries = weekResults.flatMap(r => r.masterEntries);
+  const conflicts = weekResults.flatMap(r => r.conflicts);
+  const potokUnits = weekResults.flatMap(r => r.potokUnits);
 
   // ========================================================
   // 10-vazifa: SIFAT QOIDALARINI TEKSHIRISH VA TUZATISH
@@ -545,6 +579,7 @@ export function generateSchedule({
           const max = slots[slots.length - 1];
           if (max - min + 1 !== slots.length) {
             for (const entry of dayEntries) {
+              if (entry.isPotok) continue; // potok guruhlari birga turishi kerak
               const targetSlots = [min + 1, max - 1, min - 1, max + 1].filter(s => s >= 1 && s <= 5 && !slots.includes(s));
               for (const targetSlot of targetSlots) {
                 const tConflict = entries.some(e => e !== entry && e.dayId === d && e.slotId === targetSlot && e.teacherId === t.id);
@@ -579,8 +614,6 @@ export function generateSchedule({
     return repaired;
   }
 
-  repairTeacherWindows(masterEntries);
-
   // ========================================================
   // MUSTAQIL TA'LIM (Task 3, 7, 8)
   // Guruhning haftalik bo'sh qolgan o'rinlariga ARM xonasida
@@ -595,10 +628,12 @@ export function generateSchedule({
 
   const independentStudyEntries = [];
   if (includeIndependentStudy) {
+    weekResults.forEach((wr, wIdx) => {
+    const weekNum = WEEKS[wIdx].weekNumber;
     groups.forEach(g => {
       for (let d = 1; d <= 6; d++) {
-        const dayEntries = masterEntries.filter(e => e.groupId === g.id && e.dayId === d);
-        if (dayEntries.length >= 2 && dayEntries.length <= 3) {
+        const dayEntries = wr.masterEntries.filter(e => e.groupId === g.id && e.dayId === d);
+        if (dayEntries.length === 2) { // mustaqil ta'lim bilan ham kuniga maks 3 para
           const maxSlot = Math.max(...dayEntries.map(e => e.slotId));
           if (maxSlot < 5) {
             const indSlotId = maxSlot + 1;
@@ -606,8 +641,9 @@ export function generateSchedule({
             const dayObj = DAYS_OF_WEEK.find(dObj => dObj.id === d);
 
             independentStudyEntries.push({
-              masterTaskId: `indep_${g.id}_d${d}_s${indSlotId}`,
-              unitId: `indep_${g.id}_d${d}_s${indSlotId}`,
+              masterTaskId: `indep_w${weekNum}_${g.id}_d${d}_s${indSlotId}`,
+              unitId: `indep_w${weekNum}_${g.id}_d${d}_s${indSlotId}`,
+              activeWeeks: [weekNum],
               isIndependent: true,
               isPotok: false,
               dayId: d,
@@ -635,18 +671,35 @@ export function generateSchedule({
         }
       }
     });
+    });
   }
 
   // ========================================================
   // IV BOSQICH: 9 & 10-VAZIFALAR: QOIDALAR AUDITI & TEKSHIRUV
+  // Har hafta alohida tekshiriladi (haftalar bir-biriga to'qnashmaydi);
+  // soatlar yig'indisi (h4) esa barcha haftalar bo'yicha hisoblanadi.
   // ========================================================
-  const auditReport = validateSchedule({
-    entries: masterEntries,
-    groups,
-    teachers,
-    rooms,
-    curriculums: activeCurriculums
-  });
+  const auditArgs = { groups, teachers, rooms, curriculums: activeCurriculums };
+  const weekAudits = weekResults.map(wr => validateSchedule({ entries: wr.masterEntries, ...auditArgs }));
+  const totalAudit = validateSchedule({ entries: masterEntries, ...auditArgs });
+  const mergeChecks = (key) =>
+    totalAudit[key].map((chk, i) => {
+      if (chk.id === 'h4') return chk;
+      const bad = weekAudits.map(a => a[key][i]).find(c => !c.passed);
+      return bad || weekAudits[0][key][i];
+    });
+  const hardChecks = mergeChecks('hardConstraints');
+  const qualityChecks = mergeChecks('qualityConstraints');
+  const allChecks = [...hardChecks, ...qualityChecks];
+  const passedCount = allChecks.filter(c => c.passed).length;
+  const auditReport = {
+    allPassed: allChecks.every(c => c.passed),
+    scorePercentage: Math.round((passedCount / allChecks.length) * 100),
+    passedChecks: passedCount,
+    totalChecks: allChecks.length,
+    hardConstraints: hardChecks,
+    qualityConstraints: qualityChecks
+  };
 
   // ========================================================
   // 15 HAFTALIK JADVALNI NIKOHLASH (Task 11)
@@ -864,7 +917,9 @@ export function validateSchedule({
   let groupExceeded = 0;
   groups.forEach(g => {
     const count = entries.filter(e => e.groupId === g.id).length;
-    if (count > 24) groupExceeded++;
+    const perDay = {};
+    entries.filter(e => e.groupId === g.id).forEach(e => { perDay[e.dayId] = (perDay[e.dayId] || 0) + 1; });
+    if (count > 24 || Object.values(perDay).some(n => n > 3)) groupExceeded++;
   });
   hardConstraints.push({
     id: 'h5',
@@ -872,7 +927,7 @@ export function validateSchedule({
     taskTitle: '5-qat\'iy cheklov (guruh)',
     title: 'Guruhning haftalik parasi haftalik sig\'imdan oshmaydi',
     passed: groupExceeded === 0,
-    details: groupExceeded === 0 ? 'Barcha 25 ta guruh haftalik sig\'im doirasida (kunlik maks 4 para)' : `${groupExceeded} ta guruh sig'imdan oshgan`
+    details: groupExceeded === 0 ? 'Barcha 25 ta guruh haftalik sig\'im doirasida (kunlik maks 3 para)' : `${groupExceeded} ta guruh sig'imdan oshgan`
   });
 
   // 6. O'qituvchining kunlik va haftalik parasi chegaradan oshmaydi
