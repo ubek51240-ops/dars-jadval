@@ -63,6 +63,53 @@ export function generateSchedule({
     return base;
   };
 
+  // Guruhning har haftalik parasi sig'imdan (6 kun x 3 para) oshmasligi uchun ortiqcha
+  // amaliyot/lab/seminar paralari eng bo'sh haftalarga ko'chiriladi (jami soat o'zgarmaydi).
+  const WEEK_CAP = 18;
+  const slotTypesOf = (curr) => {
+    const num = (v, cond, dflt) => (v !== undefined ? Number(v) : (cond ? Number(dflt) : 0));
+    const l = num(curr.lectureHours, curr.type === 'lecture', curr.hoursPerWeek || 2);
+    const p = num(curr.practiceHours, curr.type === 'practice', curr.hoursPerWeek || 2);
+    const lb = num(curr.labHours, curr.type === 'lab', curr.hoursPerWeek || 2);
+    const s = num(curr.seminarHours, curr.type === 'seminar', curr.hoursPerWeek || 2);
+    if (!l && !p && !lb && !s) return [{ type: curr.type || 'lecture', hours: Number(curr.hoursPerWeek || 2) }];
+    return [
+      l > 0 && { type: 'lecture', hours: l },
+      p > 0 && { type: 'practice', hours: p },
+      lb > 0 && { type: 'lab', hours: lb },
+      s > 0 && { type: 'seminar', hours: s }
+    ].filter(Boolean);
+  };
+  const allocMap = new Map(); // `${groupId}|${currId}|${type}` -> [w1, w2, w3]
+  groups.forEach(group => {
+    const entries = [];
+    activeCurriculums
+      .filter(c => c.majorId === group.majorId && Number(c.year) === Number(group.year))
+      .forEach(curr => {
+        slotTypesOf(curr).forEach(({ type, hours }) => {
+          const arr = weekAlloc(curr, Math.max(1, Math.round(hours / 2)));
+          allocMap.set(`${group.id}|${curr.id}|${type}`, arr);
+          entries.push({ type, arr });
+        });
+      });
+    const totals = WEEKS.map((_, i) => entries.reduce((a, e) => a + (e.arr[i] || 0), 0));
+    for (let guard = 0; guard < 500; guard++) {
+      const from = totals.indexOf(Math.max(...totals));
+      if (totals[from] <= WEEK_CAP) break;
+      const to = totals.indexOf(Math.min(...totals));
+      if (totals[to] >= WEEK_CAP || to === from) break;
+      // ortiqcha haftada eng ko'p paraga ega amaliy turdagi yozuvni tanlaymiz
+      const cand = entries
+        .filter(e => e.type !== 'lecture' && e.arr[from] > 0)
+        .sort((a, b) => b.arr[from] - a.arr[from])[0];
+      if (!cand) break;
+      cand.arr[from]--;
+      cand.arr[to]++;
+      totals[from]--;
+      totals[to]++;
+    }
+  });
+
   const runWeek = (weekNum, weekIdx) => {
   const lectureItems = [];
   const otherItems = [];
@@ -80,7 +127,8 @@ export function generateSchedule({
 
       const addSlots = (type, hours, teacherId, reqRoom) => {
         const slotsNeeded = Math.max(1, Math.round(hours / 2));
-        const weekSlots = weekAlloc(curr, slotsNeeded)[weekIdx] || 0;
+        const alloc = allocMap.get(`${group.id}|${curr.id}|${type}`) || weekAlloc(curr, slotsNeeded);
+        const weekSlots = alloc[weekIdx] || 0;
         for (let s = 0; s < weekSlots; s++) {
           const item = {
             id: `${group.id}_${curr.id}_${type}_w${weekNum}_${s}`,
@@ -326,7 +374,9 @@ export function generateSchedule({
     const evaluatedOptions = [];
 
     // 3 bosqichli intellektual tekshiruv (Didaktik va oynasizlik qoidalariga 100% rioya etish)
-    for (let pass = 1; pass <= 3; pass++) {
+    // 4-o'tish: guruh darslari tutash bo'lishi shart emas; 5-o'tish: kunlik fan limiti ham yumshatiladi.
+    // Kunlik 3 para chegarasi va to'qnashuvsizlik barcha o'tishlarda saqlanadi.
+    for (let pass = 1; pass <= 5; pass++) {
       if (evaluatedOptions.length > 0) break;
 
       for (const day of sortedDays) {
@@ -369,7 +419,7 @@ export function generateSchedule({
             }
           }
         }
-        if (subjectDayExceeded) continue;
+        if (subjectDayExceeded && pass < 5) continue;
 
         // Darchasiz (oynasiz) slotlarni aniqlash
         let possibleSlots = [1, 2, 3, 4, 5];
@@ -377,7 +427,9 @@ export function generateSchedule({
         for (const gId of unit.groupIds) {
           const currentSlots = getSet(groupDaySlots, `${dayId}_${gId}`);
           let groupAllowed = [];
-          if (currentSlots.size === 0) {
+          if (pass >= 4) {
+            groupAllowed = [1, 2, 3, 4, 5].filter(s => !currentSlots.has(s));
+          } else if (currentSlots.size === 0) {
             groupAllowed = [1, 2, 3, 4];
           } else {
             const minS = Math.min(...currentSlots);
